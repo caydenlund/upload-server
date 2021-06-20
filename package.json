@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A simple HTTP file upload server",
   "main": "index.js",
-  "repository": "https://github.com/shrimpster00",
+  "repository": "https://github.com/shrimpster00/upload-server",
   "author": "shrimpster00 <caydenlund@gmail.com> (https://github.com/shrimpster00)",
   "license": "MIT"
 }
