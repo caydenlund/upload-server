@@ -5,5 +5,12 @@
   "main": "index.js",
   "repository": "https://github.com/shrimpster00/upload-server",
   "author": "shrimpster00 <caydenlund@gmail.com> (https://github.com/shrimpster00)",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "serve-index": "^1.9.1"
+  }
 }
