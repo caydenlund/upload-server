@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // Import built-in libraries.
 const http = require("http");
 

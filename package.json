@@ -6,6 +6,9 @@
   "repository": "https://github.com/shrimpster00/upload-server",
   "author": "shrimpster00 <caydenlund@gmail.com> (https://github.com/shrimpster00)",
   "license": "MIT",
+  "bin": {
+    "upload-server": "index.js"
+  },
   "scripts": {
     "start": "nodemon index.js"
   },
