@@ -1,3 +1,27 @@
-<h1>Hello, world!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<a href="/files">View files</a>
+    <link rel="stylesheet" href="bootstrap.min.css"/>
+    <link rel="stylesheet" href="style.css"/>
+
+    <title>File Uploader</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-sm" id="filesForm">
+            <form action="/upload" class="dropzone" method="post" enctype="multipart/form-data">
+                <input type="file" name="files" multiple onchange="this.form.submit()"/>
+            </form>
+        </div>
+        <div class="col-sm" id="filesLink">
+            <a href="/files">Browse Files</a>
+        </div>
+    </div>
+</div>
+<script src="bootstrap.min.js"></script>
+</body>
+</html>
