@@ -4,24 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="bootstrap.min.css"/>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/index.css"/>
 
     <title>File Uploader</title>
 </head>
 <body>
 <div class="container-fluid">
-    <div class="row align-items-center">
-        <div class="col-sm" id="filesForm">
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <input type="file" name="files" multiple onchange="this.form.submit()"/>
+    <div class="row align-items-center gy-sm-5">
+        <div class="col-sm">
+            <form id="filesForm" action="/upload" method="post" enctype="multipart/form-data">
+                <input id="fileInput" type="file" name="files" multiple onchange="this.form.submit()"/>
+                <!-- TODO: Support drag & drop -->
+                <label for="fileInput" class="bi-alarm">
+                </label>
             </form>
         </div>
-        <div class="col-sm" id="filesLink">
-            <a href="/files">Browse Files</a>
+        <div class="col-sm">
+            <a id="filesLink" href="/files">Browse Files</a>
         </div>
     </div>
 </div>
-<script src="bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

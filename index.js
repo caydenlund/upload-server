@@ -7,6 +7,8 @@ const express = require("express");
 const serveIndex = require("serve-index");
 const multer = require("multer");
 
+// TODO: Add and configure commander.
+
 // Establish defaults.
 const DEFAULT_PORT = 3000;
 const DEFAULT_FILE_DIRECTORY = "files";
@@ -38,6 +40,7 @@ app.post("/upload", upload.array("files"), (req, res, next) => {
 // Serve static files out of "public" at "/".
 app.use(express.static("public"));
 
+// TODO: Implement better file directory viewer.
 // Serve static files out of FILE_DIRECTORY at "/files".
 app.use("/files", express.static(FILE_DIRECTORY), serveIndex(FILE_DIRECTORY, {icons: true}));
 
