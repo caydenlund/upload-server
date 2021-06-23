@@ -1,95 +1,95 @@
 body {
-    background: #B0BEC5;
+  background: #b0bec5;
 }
 
 #searchBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
 }
 
 #searchBar a {
-    padding-left: 10px;
-    text-decoration: none;
-    color: #455A64;
-    font-size: 30px;
-    transition: color 200ms;
+  padding-left: 10px;
+  text-decoration: none;
+  color: #455a64;
+  font-size: 30px;
+  transition: color 200ms;
 }
 
 #searchBar a:hover {
-    color: black;
+  color: black;
 }
 
 #searchBar input {
-    width: calc(100% - 200px);
-    height: 100%;
-    padding-left: 10px;
-    float: right;
+  width: calc(100% - 200px);
+  height: 100%;
+  padding-left: 10px;
+  float: right;
 }
 
 #filesList {
-    padding-top: 50px;
-    width: 100%;
-    height: calc(100vh - 80px);
-    overflow-y: auto;
+  padding-top: 50px;
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
 }
 
 .row {
-    height: 80px;
+  height: 80px;
 }
 
 .file {
-    height: 100%;
-    padding: 15px;
+  height: 100%;
+  padding: 15px;
 }
 
 .file div {
-    background: #CFD8DC;
-    height: 100%;
-    width: 100%;
-    line-height: 50px;
-    position: relative;
+  background: #cfd8dc;
+  height: 100%;
+  width: 100%;
+  line-height: 50px;
+  position: relative;
 }
 
 .file i {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    font-size: 30px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 30px;
 }
 
 .file i.bi-x-square {
-    float: left;
-    opacity: 0;
-    cursor: pointer;
-    color: #D32F2F;
-    transition: color 200ms;
+  float: left;
+  opacity: 0;
+  cursor: pointer;
+  color: #d32f2f;
+  transition: color 200ms;
 }
 
 .file i.bi-x-square:hover {
-    color: #B71C1C;
+  color: #b71c1c;
 }
 
 .file div:hover i {
-    opacity: 0;
+  opacity: 0;
 }
 
 .file div:hover i.bi-x-square {
-    opacity: 1;
+  opacity: 1;
 }
 
 .file a {
-    display: block;
-    color: #546E7A;
-    text-decoration: none;
-    padding-left: 50px;
-    transition: color 200ms, background 200ms;
+  display: block;
+  color: #546e7a;
+  text-decoration: none;
+  padding-left: 50px;
+  transition: color 200ms, background 200ms;
 }
 
 .file a:hover {
-    background: #ECEFF1;
-    color: #37474F;
+  background: #eceff1;
+  color: #37474f;
 }
