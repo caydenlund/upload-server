@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
 
     <title>File Uploader</title>
 </head>
@@ -15,17 +15,28 @@
     <div class="row align-items-center gy-sm-5">
         <div class="col-sm">
             <form id="filesForm" action="/upload" method="post" enctype="multipart/form-data">
-                <input id="fileInput" type="file" name="files" multiple onchange="this.form.submit()"/>
-                <!-- TODO: Support drag & drop -->
-                <label for="fileInput" class="bi-alarm">
-                </label>
+                <div>
+                    <i class="bi-upload"></i>
+                    <br/>
+                    Upload Files
+                    <input id="fileInput" type="file" name="files" multiple onchange="this.form.submit()"/>
+                    <!-- TODO: Support drag & drop -->
+                    <label for="fileInput">
+                    </label>
+                </div>
             </form>
         </div>
         <div class="col-sm">
-            <a id="filesLink" href="/files">Browse Files</a>
+            <div id="filesLink">
+                <a href="/files">
+                    <i class="bi-download"></i>
+                    <br/>
+                    Browse Files
+                </a>
+            </div>
         </div>
     </div>
 </div>
-<script src="js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="/css/files.css"/>
+
+    <title>Files</title>
+</head>
+<body>
+<div id="searchBar">
+    <a href="/">Back</a>
+    <!-- TODO: Create filter. -->
+    <input type="text" autofocus/>
+</div>
+<div id="filesList" class="container-fluid">
+    <div class="row">
+        {{#each files}}
+        <div class="file col-md-4 col-sm-6">
+            <div>
+                <i class="{{this.icon}}"></i>
+                <!-- TODO: Create "delete" functionality. -->
+                <a href="/"><i class="bi-x-square"></i></a>
+                <a class="text-truncate" href="/files/{{this.safeName}}">{{this.name}}</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
