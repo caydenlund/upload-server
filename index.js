@@ -61,20 +61,32 @@ app.use(express.static(APP_ROOT + "/public"));
 // Serve static files out of FILE_DIRECTORY at "/files".
 app.use("/files", express.static(FILE_DIRECTORY));
 app.get("/files/*", (req, res) => {
+  const fileDirectory = path.join(FILE_DIRECTORY, req.params[0]);
   // First, create an array of all the files and directories with their respective icons.
   let files = [];
   let directories = [];
-  fs.readdirSync(FILE_DIRECTORY).forEach((file) => {
-    if (fs.statSync(file).isDirectory()) {
-      directories.push({
-        name: file,
-        safeName: encodeURIComponent(file),
-        icon: "bi-folder"
-      });
+  // If a subdirectory is requested, add ".." to the array of directories.
+  if (req.params[0] !== "") {
+    directories.push({
+      name: "..",
+      safeName: "files/" + req.params[0].replace(/[^\/]*\/?$/, ""),
+      icon: "bi-folder"
+    });
+  }
+  fs.readdirSync(fileDirectory).forEach((file) => {
+    if (fs.statSync(path.join(fileDirectory, file)).isDirectory()) {
+      // Exclude the recycle bin directory.
+      if (file !== ".recycle_bin") {
+        directories.push({
+          name: file,
+          safeName: path.join(fileDirectory, encodeURIComponent(file)),
+          icon: "bi-folder"
+        });
+      }
     } else {
       files.push({
         name: file,
-        safeName: encodeURIComponent(file),
+        safeName: path.join(fileDirectory, encodeURIComponent(file)),
         icon: getIcon(file)
       });
     }
