@@ -5,4 +5,13 @@ function sendDelete(event) {
     const xhr = new XMLHttpRequest();
     xhr.open('DELETE', `/files/${target}`);
     xhr.send();
+
+    xhr.on("error", function(err) {
+        // TODO: Handle error
+        console.log(err);
+    });
+
+    xhr.on("load", function() {
+        window.location.reload();
+    });
 }

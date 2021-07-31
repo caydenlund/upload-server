@@ -79,14 +79,14 @@ app.get("/files/*", (req, res) => {
       if (file !== ".recycle_bin") {
         directories.push({
           name: file,
-          safeName: path.join(fileDirectory, encodeURIComponent(file)),
+          safeName: encodeURIComponent(file),
           icon: "bi-folder"
         });
       }
     } else {
       files.push({
         name: file,
-        safeName: path.join(fileDirectory, encodeURIComponent(file)),
+        safeName: encodeURIComponent(file),
         icon: getIcon(file)
       });
     }
@@ -100,10 +100,18 @@ app.get("/files/*", (req, res) => {
 
 // Handle DELETE requests at "/files/*".
 app.delete("/files/*", (req, res) => {
-  const file = req.params[0].replace(/^files\//, "");
-  const oldLocation = path.join(FILE_DIRECTORY, file);
+  const file = path.join(FILE_DIRECTORY, req.params[0]);
+
+  // First, check that the file exists.
+  if (!fs.existsSync(file)) {
+    console.warn(`DELETE: File does not exist: "${file}"`);
+    res.status(404).send("File not found.");
+    res.end();
+    return;
+  }
+
   const newDirectory = path
-    .dirname(oldLocation)
+    .dirname(file)
     .replace(FILE_DIRECTORY, FILE_DIRECTORY + "/.recycle_bin");
   // If the directory doesn't exist, create it.
   if (!fs.existsSync(newDirectory)) {
@@ -111,9 +119,10 @@ app.delete("/files/*", (req, res) => {
   }
   // Move the file to the recycle bin.
   fs.renameSync(
-    oldLocation,
-    path.join(newDirectory, `${Date.now()}__${path.basename(oldLocation)}`)
+    file,
+    path.join(newDirectory, `${Date.now()}__${path.basename(file)}`)
   );
+  console.log(`DELETE: "${file}" moved to "${newDirectory}"`);
 
   res.end();
 });
