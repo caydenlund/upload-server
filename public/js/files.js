@@ -6,12 +6,12 @@ function sendDelete(event) {
     xhr.open('DELETE', `/files/${target}`);
     xhr.send();
 
-    xhr.on("error", function(err) {
+    xhr.addEventListener("error", function(err) {
         // TODO: Handle error
         console.log(err);
     });
 
-    xhr.on("load", function() {
+    xhr.addEventListener("load", function() {
         window.location.reload();
     });
 }
