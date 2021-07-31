@@ -22,16 +22,14 @@
         <div class="file col-md-4 col-sm-6">
           <div>
             <i class="{{this.icon}}"></i>
-            <!-- TODO: Create "delete" functionality. -->
-            <a href="/"><i class="bi-x-square"></i></a>
-            <a class="text-truncate" href="/{{this.safeName}}"
-              >{{this.name}}</a
-            >
+            <a href="#" data-target="{{this.safeName}}" onclick="sendDelete(event)"><i class="bi-x-square"></i></a>
+            <a class="text-truncate" href="/{{this.safeName}}">{{this.name}}</a>
           </div>
         </div>
         {{/each}}
       </div>
     </div>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/files.js"></script>
   </body>
 </html>

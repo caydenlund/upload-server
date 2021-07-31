@@ -69,7 +69,7 @@ app.get("/files/*", (req, res) => {
   if (req.params[0] !== "") {
     directories.push({
       name: "..",
-      safeName: "files/" + req.params[0].replace(/[^\/]*\/?$/, ""),
+      safeName: path.join("files", path.dirname(req.params[0])),
       icon: "bi-folder"
     });
   }
@@ -92,10 +92,30 @@ app.get("/files/*", (req, res) => {
     }
   });
   // Double-check that they're sorted.
-  directories.sort((a, b) => a.name.localeCompare(b.name));
+  directories = directories.sort((a, b) => a.name.localeCompare(b.name));
   files = files.sort((a, b) => a.name.localeCompare(b.name));
   // Take the files.html template and prefill it with the list of files.
   return res.send(filesTemplate({files: directories.concat(files)}));
+});
+
+// Handle DELETE requests at "/files/*".
+app.delete("/files/*", (req, res) => {
+  const file = req.params[0].replace(/^files\//, "");
+  const oldLocation = path.join(FILE_DIRECTORY, file);
+  const newDirectory = path
+    .dirname(oldLocation)
+    .replace(FILE_DIRECTORY, FILE_DIRECTORY + "/.recycle_bin");
+  // If the directory doesn't exist, create it.
+  if (!fs.existsSync(newDirectory)) {
+    fs.mkdirSync(newDirectory, {recursive: true});
+  }
+  // Move the file to the recycle bin.
+  fs.renameSync(
+    oldLocation,
+    path.join(newDirectory, `${Date.now()}__${path.basename(oldLocation)}`)
+  );
+
+  res.end();
 });
 
 // Create server at our specified port and protocol.
