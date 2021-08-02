@@ -1,20 +1,174 @@
-const patterns = [
-  {
-    name: "bi-file-earmark-image",
-    pattern: new RegExp(".(png|jpe?g|gif|bmp)$")
-  },
-  {
-    name: "bi-file-earmark-code",
-    pattern: new RegExp(".(m?jsx?|ts|html?|css|s[ac]ss|less|md|json)")
-  }
-];
-
-//TODO: Build more complete DB.
+// According to the file extension, return the icon name.
+const patterns = {
+  binary: [
+    "apk",
+    "bat",
+    "bin",
+    "class",
+    "com",
+    "exe",
+    "gadget",
+    "jar",
+    "msi",
+    "sys",
+    "vbe",
+    "vbs",
+    "vbscript",
+    "x64",
+    "x86"
+  ],
+  code: [
+    "asp",
+    "aspx",
+    "c",
+    "cer",
+    "cfm",
+    "cgi",
+    "cpp",
+    "cs",
+    "cshtml",
+    "css",
+    "h",
+    "hpp",
+    "htm",
+    "html",
+    "hxx",
+    "jade",
+    "java",
+    "js",
+    "json",
+    "jsp",
+    "md",
+    "php",
+    "pl",
+    "py",
+    "rb",
+    "rss",
+    "sass",
+    "scss",
+    "sct",
+    "sh",
+    "sql",
+    "swift",
+    "vb",
+    "vbscript",
+    "xhtm",
+    "xhtml",
+    "xml",
+    "xsl",
+    "ws",
+    "wsf",
+    "wsh",
+    "yml",
+    "yaml"
+  ],
+  font: ["eot", "otf", "ttf", "woff", "woff2"],
+  image: [
+    "ai",
+    "bmp",
+    "e?ps",
+    "gif",
+    "ico",
+    "jpg",
+    "jpeg",
+    "png",
+    "psd",
+    "svg",
+    "tif",
+    "tiff",
+    "webp"
+  ],
+  music: [
+    "aif",
+    "aiff",
+    "cda",
+    "mid",
+    "midi",
+    "mp3",
+    "mpa",
+    "ogg",
+    "opus",
+    "wav",
+    "wma",
+    "wpl",
+    "xm"
+  ],
+  pdf: ["pdf"],
+  play: [
+    "3g2",
+    "3gp",
+    "avi",
+    "flv",
+    "h264",
+    "m4v",
+    "mkv",
+    "mov",
+    "mp4",
+    "mpeg",
+    "mpg",
+    "rm",
+    "swf",
+    "vob",
+    "webm",
+    "wmv"
+  ],
+  richtext: [
+    "djvu",
+    "doc",
+    "docx",
+    "dotx",
+    "epub",
+    "fodt",
+    "gdoc",
+    "hwp",
+    "latex",
+    "mht",
+    "mhtml",
+    "odt",
+    "pages",
+    "rtf",
+    "tex"
+  ],
+  slides: [
+    "key",
+    "odp",
+    "ppsm",
+    "pps",
+    "ppsx",
+    "pot",
+    "potm",
+    "potx",
+    "ppt",
+    "pptm",
+    "pptx"
+  ],
+  spreadsheet: ["csv", "ods", "xls", "xlsm", "xlsx", "xlt", "xltm", "xltx"],
+  text: ["diff?", "email", "eml", "emlx", "msg", "oft", "pst", "txt"],
+  zip: [
+    "7z",
+    "arj",
+    "bz2",
+    "cab",
+    "chm",
+    "deb",
+    "gz",
+    "pkg",
+    "rar",
+    "rpm",
+    "tar",
+    "tbz2",
+    "xar",
+    "z",
+    "zip"
+  ]
+};
 
 module.exports = (name) => {
-  let patternName;
-  patterns.forEach((pattern) => {
-    if (pattern.pattern.test(name)) patternName = pattern.name;
-  });
-  return patternName || "bi-file-earmark";
+  for (const filetype in patterns) {
+    const extension = patterns[filetype].find((extension) =>
+      name.endsWith(extension)
+    );
+    if (extension) return "bi-file-earmark-" + filetype;
+  }
+  return "bi-file-earmark";
 };
