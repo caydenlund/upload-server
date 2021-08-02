@@ -30,7 +30,7 @@ if (!fs.existsSync(FILE_DIRECTORY)) {
 }
 
 // Create a recycle bin directory.
-const RECYCLE_BIN_DIRECTORY = `${FILE_DIRECTORY}/.recycle_bin`;
+const RECYCLE_BIN_DIRECTORY = path.join(FILE_DIRECTORY, ".recycle_bin");
 if (!fs.existsSync(RECYCLE_BIN_DIRECTORY)) {
   fs.mkdirSync(RECYCLE_BIN_DIRECTORY);
 }
@@ -110,9 +110,9 @@ app.delete("/files/*", (req, res) => {
     return;
   }
 
-  const newDirectory = path
-    .dirname(file)
-    .replace(FILE_DIRECTORY, FILE_DIRECTORY + "/.recycle_bin");
+  const fileDir = path.dirname(file) + "/";
+
+  const newDirectory = fileDir.replace(FILE_DIRECTORY, RECYCLE_BIN_DIRECTORY);
   // If the directory doesn't exist, create it.
   if (!fs.existsSync(newDirectory)) {
     fs.mkdirSync(newDirectory, {recursive: true});
