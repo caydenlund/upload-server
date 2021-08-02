@@ -20,7 +20,7 @@ function filterFiles(event) {
   const name = event.target.value;
   const files = document.getElementsByClassName("file");
   for (file of files) {
-    if (file.dataset.filename.indexOf(name) === -1 && name !== "") {
+    if (file.dataset.filename.toLowerCase().indexOf(name.toLowerCase()) === -1 && name !== "") {
       file.style.display = "none";
     } else {
       file.style.display = "";
