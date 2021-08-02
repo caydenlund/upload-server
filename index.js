@@ -15,8 +15,6 @@ const filesTemplate = require("./modules/files");
 const getIcon = require("./modules/getIcon");
 const argv = require("./modules/argv");
 
-// TODO: Establish some try/catch safeguards.
-
 // Establish global constants.
 const PORT = argv.options.port;
 const HOST = argv.options.host;
