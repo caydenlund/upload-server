@@ -19,8 +19,9 @@ function sendDelete(event) {
 function filterFiles(event) {
   const name = event.target.value;
   const files = document.getElementsByClassName("file");
-  for (file of files) {
-    if (file.dataset.filename.toLowerCase().indexOf(name.toLowerCase()) === -1 && name !== "") {
+  for (let file of files) {
+    let filename = file.dataset.filename.toLowerCase();
+    if (filename.indexOf(name.toLowerCase()) === -1 && name !== "") {
       file.style.display = "none";
     } else {
       file.style.display = "";
