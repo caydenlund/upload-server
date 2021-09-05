@@ -7,8 +7,7 @@ function sendDelete(event) {
   xhr.send();
 
   xhr.addEventListener("error", function (err) {
-    // TODO: Handle error
-    console.log(err);
+    console.error(err);
   });
 
   xhr.addEventListener("load", function () {
