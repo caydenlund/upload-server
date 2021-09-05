@@ -24,7 +24,8 @@
             <i class="bi-upload"></i>
             <br />
             Upload Files
-            <input id="fileInput" type="file" name="files" multiple onchange="this.form.submit()" />
+            <!-- <input id="fileInput" type="file" name="files" multiple onchange="this.form.submit()" /> -->
+            <input id="fileInput" type="file" name="files" multiple onchange="upload(event.target.files)" />
             <!-- TODO: Support drag & drop -->
             <label for="fileInput"> </label>
           </div>

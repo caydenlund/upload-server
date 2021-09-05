@@ -1,3 +1,13 @@
+function upload(files) {
+  var formData = new FormData();
+  for (var i = 0; i < files.length; i++) {
+    formData.append("files", files[i]);
+  }
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/upload");
+  xhr.send(formData);
+}
+
 document.addEventListener("dragover", function (event) {
   event.preventDefault();
   document.body.classList.add("dragover");
@@ -6,7 +16,5 @@ document.addEventListener("dragover", function (event) {
 document.addEventListener("drop", function (event) {
   event.preventDefault();
   document.body.classList.remove("dragover");
-  var files = event.dataTransfer.files;
-
-  console.log(files);
+  upload(event.dataTransfer.files);
 });
